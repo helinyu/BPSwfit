@@ -14,6 +14,7 @@
 		413B8EC421F24B3A00F5ED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413B8EC221F24B3A00F5ED5D /* LaunchScreen.storyboard */; };
 		413B8ECF21F24B3A00F5ED5D /* BPSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413B8ECE21F24B3A00F5ED5D /* BPSwiftTests.swift */; };
 		413B8EDA21F24B3A00F5ED5D /* BPSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413B8ED921F24B3A00F5ED5D /* BPSwiftUITests.swift */; };
+		413B8EEA21F255AC00F5ED5D /* BPPreviewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413B8EE921F255AC00F5ED5D /* BPPreviewLoginViewController.swift */; };
 		5A3BA0A8D3798745006A07B7 /* Pods_BPSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B79B4B570D5124294CD33D4 /* Pods_BPSwiftTests.framework */; };
 		5F234F010EFC801E311D8F96 /* Pods_BPSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45C82929082004A03E18F8B /* Pods_BPSwiftUITests.framework */; };
 		D6862BC6136EE836F13051D1 /* Pods_BPSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EEEA167058C73879D93ADB /* Pods_BPSwift.framework */; };
@@ -53,6 +54,7 @@
 		413B8ED521F24B3A00F5ED5D /* BPSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BPSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		413B8ED921F24B3A00F5ED5D /* BPSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPSwiftUITests.swift; sourceTree = "<group>"; };
 		413B8EDB21F24B3A00F5ED5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		413B8EE921F255AC00F5ED5D /* BPPreviewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BPPreviewLoginViewController.swift; sourceTree = "<group>"; };
 		41ABF08C7676063703806127 /* Pods-BPSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BPSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BPSwift/Pods-BPSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		56B9A57B2C41C6FCFF89515F /* Pods-BPSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BPSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BPSwiftUITests/Pods-BPSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		64B91186E6BE8427BA9ED244 /* Pods-BPSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BPSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BPSwiftUITests/Pods-BPSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		413B8EB821F24B3600F5ED5D /* BPSwift */ = {
 			isa = PBXGroup;
 			children = (
+				413B8EE721F2556D00F5ED5D /* Business */,
 				413B8EB921F24B3600F5ED5D /* AppDelegate.swift */,
 				413B8EBB21F24B3600F5ED5D /* ViewController.swift */,
 				413B8EBD21F24B3700F5ED5D /* Main.storyboard */,
@@ -140,6 +143,22 @@
 				413B8EDB21F24B3A00F5ED5D /* Info.plist */,
 			);
 			path = BPSwiftUITests;
+			sourceTree = "<group>";
+		};
+		413B8EE721F2556D00F5ED5D /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				413B8EE821F2557C00F5ED5D /* Login */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		413B8EE821F2557C00F5ED5D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				413B8EE921F255AC00F5ED5D /* BPPreviewLoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6C3D4C32B42C7DCC0C422589 /* Pods */ = {
@@ -445,6 +464,7 @@
 			files = (
 				413B8EBC21F24B3700F5ED5D /* ViewController.swift in Sources */,
 				413B8EBA21F24B3600F5ED5D /* AppDelegate.swift in Sources */,
+				413B8EEA21F255AC00F5ED5D /* BPPreviewLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +643,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -639,7 +662,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -656,7 +682,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -674,7 +704,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -691,7 +725,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -708,7 +746,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2XBEJ6876;
 				INFOPLIST_FILE = BPSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helinyu.music.BPSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
