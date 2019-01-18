@@ -13,8 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let service = BPPreviewService()
-        service.showLoginPreview()
+        let flag: Bool = BP_SYSTEM_VERSION_EQUAL_TO(v: 12.1)
+        let version: String = UIDevice.current.systemVersion as String
+        print("system version :",flag, version, kcurrentSysVersionF, kcurrentSysVersion)
+        
+//        let service = BPPreviewService()
+//        service.showLoginPreview()
 
     }
 
