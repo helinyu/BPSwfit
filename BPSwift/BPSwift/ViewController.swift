@@ -7,20 +7,38 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
+    
+    var nameL: UILabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let flag: Bool = BP_SYSTEM_VERSION_EQUAL_TO(v: 12.1)
-        let version: String = UIDevice.current.systemVersion as String
-        print("system version :",flag, version, kcurrentSysVersionF, kcurrentSysVersion)
-        
-//        let service = BPPreviewService()
-//        service.showLoginPreview()
-
+        self.viewInit()
+        self.makeConstraints()
+        self.styleInit()
     }
+    
+    func viewInit() {
+        self.view.addSubview(nameL)
+    }
+    
+    func makeConstraints() {
+        nameL.snp.makeConstraints { (make) in
+            make.center.equalTo(self.view)
+            make.height.equalTo(50.0)
+            make.left.equalToSuperview().offset(30.0)
+            make.right.equalToSuperview().offset(-30.0)
+        }
+        
+    }
+    
+    func styleInit() {
+        nameL.backgroundColor = UIColor.blue
+    }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         

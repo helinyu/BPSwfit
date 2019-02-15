@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-let kScreenBounds: CGRect = UIScreen.main.bounds
-let kScreenWidth: CGFloat = kScreenBounds.width
-let kScreenHeight: CGFloat = kScreenBounds.height
-
 let kCurrentDevice: UIDevice = UIDevice.current
 let kcurrentSysVersionS: NSString = kCurrentDevice.systemVersion as NSString
 let kcurrentSysVersionF: Float = kcurrentSysVersionS.floatValue
@@ -21,62 +17,101 @@ let kcurrentSysVersionF: Float = kcurrentSysVersionS.floatValue
 func BP_SYSTEM_VERSION_EQUAL_TO(v: Float) -> Bool {
     return (kcurrentSysVersionF == v)
 }
-// 其他的类似这样去替换掉
 
-//// version check
+func BP_SYSTEM_VERSION_GREATER_THAN(v: Float) -> Bool {
+    return (kcurrentSysVersionF > v)
+}
 
-//#define DL_SYSTEM_VERSION_GREATER_THAN(v) [[[UIDevice currentDevice] systemVersion] floatValue] > v
-//#define DL_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) [[[UIDevice currentDevice] systemVersion] floatValue] >= v
-//#define DL_SYSTEM_VERSION_LESS_THAN(v) [[[UIDevice currentDevice] systemVersion] floatValue] < v
-//#define DL_SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) [[[UIDevice currentDevice] systemVersion] floatValue] <= v
-//
-//// 这里可以延展一些系统版本的判断
-//#define BEFORE_IOS9 DL_SYSTEM_VERSION_LESS_THAN(9.f)
-//
-////device screen size mainly for the view setting.
-//#define IS_SCREEN_SIZE_1 [UIScreen mainScreen].bounds.size.height == 480
-//#define IS_SCREEN_SIZE_2 [UIScreen mainScreen].bounds.size.height == 568
-//#define IS_SCREEN_SIZE_3 [UIScreen mainScreen].bounds.size.height == 667
-//#define IS_SCREEN_SIZE_4 [UIScreen mainScreen].bounds.size.height == 736
-//#define IS_SCREEN_SIZE_5 [UIScreen mainScreen].bounds.size.height == 812
-//
-//// setting the screen size 、scale 、 round size
-//#define DEVICE_WIDTH_SCALE_FOR_FONT (([UIScreen mainScreen].bounds.size.width / 375.0) > 1 ? 1 : ([UIScreen mainScreen].bounds.size.width / 375.0))
-//#define DEVICE_WIDTH_OF_FOR_FONT(x) round((x) * DEVICE_WIDTH_SCALE_FOR_FONT)
-////scale
-//#define DEVICE_WIDTH_SCALE ([UIScreen mainScreen].bounds.size.width / 375.0)
-//#define DEVICE_HEIGHT_SCALE ([UIScreen mainScreen].bounds.size.height / 667.0)
-////width
-//#define DEVICE_WIDTH_OF(x) round((x) * DEVICE_WIDTH_SCALE) // 四舍五入
-//#define DEVICE_WIDTH_BY(x) ((x) *DEVICE_WIDTH_SCALE) // 大约
-//#define DEVICE_WIDTH_FLOORF(x) floorf((x) * DEVICE_WIDTH_SCALE) // 向下去整
-//#define DEVICE_WIDTH_CEILF(x) ceilf((x) * DEVICE_WIDTH_SCALE) // 向上去整
-//// height
-//#define DEVICE_HEIGHT_OF(x) round((x) * DEVICE_HEIGHT_SCALE) // 四舍五入
-//#define DEVICE_HEIGHT_BY(x) ((x) *DEVICE_HEIGHT_SCALE) // 大约
-//#define DEVICE_HEIGHT_FLOORF(x) floorf((x) * DEVICE_HEIGHT_SCALE) // 向下去整
-//#define DEVICE_HEIGHT_CEILF(x) ceilf((x) * DEVICE_HEIGHT_SCALE) // 向上去整
-//
-////底部为宽， 左右两边为高
-//#define SCREEN_WIDTH_V0 [UIScreen mainScreen].bounds.size.width
-//#define SCREEN_HEIGHT_V0 [UIScreen mainScreen].bounds.size.height
-//// 旋转获取原来短边
-//#define SCREEN_WIDTH_V1 MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
-//#define SCREEN_HEIGHT_V1 MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
-//
-//#define SCREEN_BOUNDS CGRectMake(0,0,SCREEN_WIDTH_V1, SCREEN_HEIGHT_V1)  // 屏幕bounds
-//#define SCREEN_SIZE CGSizeMake(SCREEN_WIDTH_V1, SCREEN_HEIGHT_V1) // 屏幕大小
-//#define SCREEN_CENTER CGPointMake(SCREEN_WIDTH_V0 * 0.5, SCREEN_HEIGHT_V0 * 0.5) // 屏幕中心
-//
-//// rename the constant above
-//#define DWF(x) DEVICE_WIDTH_OF(x)  // 四舍五入
-//#define DWB(x) DEVICE_WIDTH_BY(x) // 大约
-//#define DWFF(x) DEVICE_WIDTH_FLOORF(x) // 向下去整
-//#define DWCF(x) DEVICE_WIDTH_CEILF(x) // 向上去整
-//#define DHF(x) DEVICE_HEIGHT_OF(x) // 四舍五入
-//#define DHB(x) DEVICE_HEIGHT_BY(x)  // 大约
-//#define DHFF(x) DEVICE_HEIGHT_FLOORF(x) // 向下去整
-//#define DHCF(x) DEVICE_HEIGHT_CEILF(x) // 向上去整
+func BP_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v: Float) -> Bool {
+    return (kcurrentSysVersionF >= v)
+}
+
+func BP_SYSTEM_VERSION_LESS_THAN(v: Float) -> Bool {
+    return (kcurrentSysVersionF < v)
+}
+
+func BP_SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v: Float) -> Bool {
+    return (kcurrentSysVersionF <= v)
+}
+
+func BEFORE_IOS9() -> Bool {
+    return BP_SYSTEM_VERSION_LESS_THAN(v: 9.0)
+}
+
+func AFTER_IOS9() -> Bool {
+    return BP_SYSTEM_VERSION_GREATER_THAN(v: 9.0)
+}
+
+let kScreenBounds: CGRect = UIScreen.main.bounds
+let kScreenWidth: CGFloat = kScreenBounds.width
+let kScreenHeight: CGFloat = kScreenBounds.height
+let kScreenSize : CGSize = kScreenBounds.size // 屏幕大小
+let kScreenCenter : CGPoint = CGPoint.init(x: kScreenWidth * 0.5, y: kScreenHeight * 0.5)
 
 
+func IS_SCREEN_SIZE_1() -> Bool {
+    return (kScreenHeight == 480.0)
+}
 
+func IS_SCREEN_SIZE_2() -> Bool {
+    return (kScreenHeight == 568.0)
+}
+
+func IS_SCREEN_SIZE_3() -> Bool {
+    return (kScreenHeight == 667.0)
+}
+func IS_SCREEN_SIZE_4() -> Bool {
+    return (kScreenHeight == 736.0)
+}
+func IS_SCREEN_SIZE_5() -> Bool {
+    return (kScreenHeight == 812.0)
+}
+
+func DEVICE_WIDTH_SCALE_FOR_FONT() -> CGFloat {
+    return ((kScreenWidth/375.0) > 1.0 ? 1.0 : (kScreenWidth/375.0))
+}
+
+func DEVICE_WIDTH_OF_FOR_FONT(x : CGFloat) -> CGFloat {
+    return (round(x) * DEVICE_WIDTH_SCALE_FOR_FONT())
+}
+
+func DEVICE_WIDTH_SCALE() -> CGFloat {
+    return kScreenWidth/375.0;
+}
+
+func DEVICE_HEIGHT_SCALE() -> CGFloat {
+    return kScreenHeight/667.0;
+}
+
+func DEVICE_WIDTH_OF(x: CGFloat) -> CGFloat { // 四舍五入
+    return (round((x) * DEVICE_WIDTH_SCALE()))
+}
+
+func DWF(x: CGFloat) -> CGFloat {
+    return DEVICE_WIDTH_OF(x: x)
+} // 四舍五入
+
+func DEVICE_WIDTH_BY(x: CGFloat) -> CGFloat { // 大约
+    return (x * DEVICE_WIDTH_SCALE())
+}
+
+func DHB(x: CGFloat) -> CGFloat {
+    return DEVICE_WIDTH_BY(x: x)
+} // 大约
+
+func DEVICE_WIDTH_CEILF(x: CGFloat) -> CGFloat { // 向上去整
+    return (CGFloat(ceilf(Float((x) * DEVICE_WIDTH_SCALE()))))
+}
+
+func DWCF(x: CGFloat) -> CGFloat {
+    return DEVICE_WIDTH_CEILF(x: x)
+} //向上去整
+
+
+func DEVICE_WIDTH_FLOORF(x: CGFloat) -> CGFloat { // 向下去整
+    return (CGFloat(floorf(Float((x) * DEVICE_WIDTH_SCALE()))))
+}
+
+func DWFF(x: CGFloat) -> CGFloat {
+    return DEVICE_WIDTH_FLOORF(x: x)
+} // 向下去整
